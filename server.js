@@ -11,14 +11,12 @@ const port = process.env.PORT;  //Before getting envrioment PORT, you need to se
 
  
 const pg = knex({
-  client: 'pg',
-  connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : 'molsci@1234',
-    database : 'postgres'
-  }
-});
+	client:pg,
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+		rejectUnauthorized: false
+	}
+);
 
 
 const app = express();
